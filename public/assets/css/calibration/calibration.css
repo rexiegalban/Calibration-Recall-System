@@ -1,0 +1,51 @@
+/* 
+    Document   : calibration
+    Created on : Feb 19, 2016, 10:58:48 AM
+    Author     : MIS-Rex
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+.searchRecord-results{
+   box-shadow: 5px 5px 5px #ccc; 
+   margin-top: 0px; 
+   margin-left : 0px; 
+   background-color: white;
+   width : 65.4%;
+   border-radius: 3px 3px 3px 3px;
+   font-size: 16px;
+   padding: 8px 10px;
+   display: block;
+   position:absolute;
+   z-index:99;
+   max-height:650px;
+   overflow-y:scroll;
+   overflow:auto; 
+   display: none;
+
+}
+.searchPrint-results{
+   box-shadow: 5px 5px 5px #ccc; 
+   margin-top: 0px; 
+   margin-left : 0px; 
+   background-color: white;
+   width : 65.4%;
+   border-radius: 3px 3px 3px 3px;
+   font-size: 16px;
+   padding: 8px 10px;
+   display: block;
+   position:absolute;
+   z-index:99;
+   max-height:650px;
+   overflow-y:scroll;
+   overflow:auto; 
+   display: none;
+
+}
+

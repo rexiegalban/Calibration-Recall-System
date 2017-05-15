@@ -1,0 +1,17 @@
+<?php
+header("Content-type: application/vnd.ms-excel;");
+header("Content-Disposition: attachment; filename=".$this->pdfTitle.".xls");
+
+echo "CS CODE\tDESCRIPTION\tCALIBRATION DATE\tNEXT CALIBRATION\tLOCATION\tREMARKS\t\n";
+if($this->contentResults){
+    foreach($this->contentResults as $list){
+        
+        echo $list['cs_code']."\t";
+        echo $list['description']."\t";
+        echo $list['date_calibration']."\t";
+        echo $list['next_calibration']."\t";
+        echo $list['location']."\t";
+        echo $list['remarks']."\t";
+        echo "\n";
+    } 
+}

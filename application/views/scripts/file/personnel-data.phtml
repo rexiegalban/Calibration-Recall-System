@@ -1,0 +1,122 @@
+<script src="<?php echo $this->baseUrl(); ?>/assets/calibration/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<script src="<?php echo $this->baseUrl(); ?>/assets/js/calibration/calibration.js"></script>
+
+<div class="row">
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">File Personnel Data</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            
+          <a href="javascript:;" id="addPersonnel" class="pull-right btn btn-primary"><i class="fa fa-fw fa-plus"></i> Add Personnel Data</a>
+          <br /><br /><br />
+          <table id="recordTable" class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Type</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <?php foreach ($this->personnelList as $list) { ?>
+                <tr>
+                    <td><?php echo $list['id']; ?></td>
+                    <td><?php echo $list['fname']." ".$list['lname']; ?></td>
+                    <td><?php echo $list['department']; ?></td>
+                    <td><?php echo $list['type']; ?></td>
+                    <td class='center'>
+                            <a onclick="viewPersonnelContent(<?php echo $list['id'] ?>)" href="javascript:;"> View </a> |
+                            <a onclick="editPersonnelContent(<?php echo $list['id'] ?>)" href="javascript:;"> Edit </a> |
+                            <a onclick="deletePersonnelEntry(<?php echo $list['id'] ?>)" href="javascript:;"> Delete </a>
+                    </td>
+
+                </tr>
+
+            <?php } ?>
+
+            </tbody>
+            <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Type</th>
+              <th>Action</th>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <!-- /.box -->
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal  bs-example-modal" id="personnelModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">File Personnel Data</h4>
+      </div>
+        <form class="form-horizontal" method="POST" action="/file/add-personnel">
+        <div class="modal-body">
+              <div id="addPersonnelForm" style="">
+                    <div class="control-group">
+                        <label class="control-label" for="fname">First Name:</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" name="fname" required />
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="lname">Last name :</label>
+                        <div class="controls">
+                            <input type="text" class="form-control col-md-8" name="lname" required />
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="department">Department :</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" name="department" required />
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="type">Type :</label>
+                        <div class="controls">
+                            <select class="form-control" name="type" required>
+                                <option value="">Please select...</option>
+                                <option valu="Calibrator 1">Calibrator 1</option>
+                                <option valu="Calibrator 2">Calibrator 2</option>
+                            </select>
+                        </div>
+                    </div>
+              </div>
+              <div id="personnelData-content"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <button class="btn btn-primary" id="addPersonnel-btn" style="display:none;">Add</button>
+            <button type="button" class="btn btn-primary" id="updatePersonnel-btn" style="display:none;">Update</button>
+        </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<script>
+$("#addPersonnel").on("click",function(){
+    $("#personnelData-content").html('');
+});
+</script>

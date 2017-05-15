@@ -1,0 +1,86 @@
+<script src="<?php echo $this->baseUrl(); ?>/assets/calibration/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<script src="<?php echo $this->baseUrl(); ?>/assets/js/calibration/calibration.js"></script>
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/assets/css/calibration/calibration.css">
+
+<div class="row">
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Print Recall System</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <!-- input-group -->
+            <ul class="nav nav-pills">
+                <li class="active">
+                    <a  href="#dateRange" class="dateRangeRecall btn btn-default" data-toggle="tab">Date Range</a>
+                </li>
+                <li> 
+                    <a href="#filtering" class="filterRecall btn btn-default" data-toggle="tab">Filtering</a>
+                </li>
+            </ul>
+            <br />
+            <div class="tab-content">
+                <!--date range-->
+                <div class="tab-pane active" id="dateRange">
+                      <!-- Date range -->
+                      <form method="POST" action="/print/date-range-results">
+                      <div class="form-group col-md-8" id="searchPrint-group">
+                        <label>Date range:</label>
+                        <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right" id="reservation" name="dateRange" required>
+                                <span class="input-group-btn">
+                                  <button type="submit" class="btn btn-info btn-flat dateRangeFilter"><i class="fa fa-fw fa-search"></i></button>
+                                </span>
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                      </form>
+                </div>
+                <!--filtering-->
+                <div class="tab-pane" id="filtering">
+                    <form method="POST" action="/print/filter-results">
+                    <div class="form-group">
+                      <label>Filter :</label>
+                      <div class="input-group col-md-8">
+                        <input type="text" class="form-control" name="searchPrint" placeholder="type here... either Description/Remarks/Location" required>
+                            <span class="input-group-btn">
+                              <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-fw fa-search"></i></button>
+                            </span>
+                      </div>
+                    </div>
+                    </form>
+                    <div class="searchPrint-results" ></div>
+                </div>
+            </div>
+          <!-- /input-group -->
+        </div>
+      </div>
+      <!-- /.box -->
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal  bs-example-modal" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Calibration Details</h4>
+      </div>
+      <div class="modal-body">
+          <div id="schedule-content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="update-btn" style="display:none;">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

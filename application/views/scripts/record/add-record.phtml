@@ -1,0 +1,365 @@
+<script src="<?php echo $this->baseUrl(); ?>/assets/calibration/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<script src="<?php echo $this->baseUrl(); ?>/assets/js/calibration/calibration.js"></script>
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/assets/css/calibration/calibration.css">
+
+<div class="row">
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Add Record</h3>
+        </div>
+        <!-- /.box-header -->
+        <form method="POST" action="/record/add-record">
+        <div class="box-body">
+<!--          <a href="javascript:;" id="addRecord" class="pull-right btn btn-primary"><i class="fa fa-fw fa-plus"></i> Add Record</a>-->
+              <!-- input-group -->
+                  <div id="AddRecord-form">
+                        <label class="control-label" for="cs_code">CS CODE :</label>
+                      <div class="input-group col-md-10">
+                        <input disabled type="text" class="form-control" name="cs_code" placeholder="CS code" />
+                        <input type="hidden" class="form-control" name="cs_code" />
+                        <span class="input-group-btn">
+                          <button type="button" id="generateCsCode" class="btn bg-olive btn-flat"><i class="fa fa-fw fa-repeat"></i> Generate CS CODE</button>
+                        </span>
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="description">Description :</label>
+                        <input required type="text" class="form-control" name="description" placeholder="Description" />
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="manufacturer">Manufacturer :</label>
+                        <input required type="text" class="form-control" name="manufacturer" placeholder="Manufacturer" />
+                      </div>
+                      <label class="control-label" for="serial_number">Serial No. :</label>
+                      <div class="input-group col-md-10">
+                        <input required type="text" class="form-control" name="serial_number" placeholder="Serial No." />
+                        <span class="input-group-btn">
+                          <button type="button" id="generateSerialNo" class="btn bg-olive btn-flat"><i class="fa fa-fw fa-repeat"></i> Generate Serial No. ?</button>
+                        </span>
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="frequency">Frequency :</label>
+                        <input required type="number" class="form-control" name="frequency" placeholder="Frequency" />
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="date_calibration">Date of Calibration :</label>
+                        <input onchange="dateCalibration()" required type="text" class="form-control" name="date_calibration" placeholder="Date of Calibration" />
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="next_calibration">Next Calibration :</label>
+                            <input disabled type="text" class="form-control" name="next_calibration" placeholder="Next Calibration" />
+                            <input type="hidden" class="form-control" name="next_calibration"/>
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="location">Location :</label>
+                        <input required type="text" class="form-control" name="location" placeholder="Location" />
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="tolerance">Machine Tolerance :</label>
+                        <input type="text" class="form-control" name="tolerance" placeholder="Machine Tolerance" />
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="status">Current Status :</label>
+                        <input required type="text" class="form-control" name="status" placeholder="Current Status" />
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="calibration_hour">CAL Duration :</label>
+                        <input type="text" class="form-control" name="calibration_hour" placeholder="CAL Duration" />
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="calibration_by">Calibrated By :</label>
+                        <input type="text" class="form-control" name="calibration_by" placeholder="Calibrated By" />
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="remarks">Remarks :</label>
+                        <input type="text" class="form-control" name="remarks" placeholder="Remarks" />
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="calProcedure">Calibration Procedure :</label>
+                        <input required type="text" class="form-control" name="calProcedure" placeholder="Calibration Procedure" />
+                      </div>
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="rep_number">Calibration Report No. :</label>
+                        <input required type="text" class="form-control" name="rep_number" placeholder="Calibration Report No." />
+                      </div>
+                      <br />
+                      <div class="input-group col-md-8">
+                        <label class="control-label" for="grr"> Required GR&R ?</label>&nbsp;&nbsp;
+                        <a href="javascript:;" class="btn btn-info" id="grrYes">YES</a>&nbsp;&nbsp;
+                        <a href="javascript:;" class="btn btn-default" id="grrNo">NO</a>
+                      </div>
+                      <br />
+                      <div class="grrOption" style="display:none;">
+                          <div class="input-group col-md-6">
+                            <label class="control-label" for="calProcedure">Date Performed :</label>
+                            <input type="text" class="form-control" name="date_performed" placeholder="Date Performed " />
+                          </div>
+                          <div class="input-group col-md-6">
+                            <label class="control-label" for="performedBy">Performed By :</label>
+                            <input type="text" class="form-control" name="calProcedure" placeholder="Performed By" />
+                          </div>
+                          <div class="input-group col-md-6">
+                            <label class="control-label" for="part_measured">Part Measured :</label>
+                            <input type="text" class="form-control" name="part_measured" placeholder="Part Measured" />
+                          </div>
+                          <div class="input-group col-md-6">
+                            <label class="control-label" for="grr_result">GRR Result :</label>
+                            <input type="text" class="form-control" name="grr_result" placeholder="GRR Result" />
+                          </div>
+                      <br />
+                      </div>
+                      <br />
+                  </div>
+              <!-- /input-group -->
+        </div>
+        <div class="box-footer">
+                <center>
+                   <button type="reset" class="btn btn-default btn-lg">Cancel</button>
+                   <button type="submit" id="submitRecord-form" class="btn btn-primary btn-lg">Submit</button>
+                </center>
+        </div>
+        </form>
+        
+      </div>
+      <!-- /.box -->
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal  bs-example-modal" id="csCodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">CS Code Generator</h4>
+      </div>
+        <form method="POST">
+        <div class="box-body">
+              <!-- input-group -->
+              <div id="generateCsCode-form">
+                  <div class="input-group col-md-8">
+                    <label class="control-label" for="code_department">Department :</label>
+                      <select class="form-control col-md-8" id="code_department" required>
+                        <option value="">Please select...</option>
+                        <option value="P">PDIP</option>
+                        <option value="M">MCAN</option>
+                        <option value="Q">QA</option>
+                        <option value="F">FACILITIES</option>
+                        <option value="L">WAREHOUSE</option>
+                        <option value="T">MAINTENAINCE</option>
+                      </select>
+                  </div>
+                  <div class="input-group col-md-8">
+                    <label class="control-label" for="code_category">Category :</label>
+                      <select class="form-control col-md-8" id="code_category" required>
+                        <option value="">Please select...</option>
+                        <option value="1">Category 1</option>
+                        <option value="2">Category 2</option>
+                        <option value="3">Category 3</option>
+                        <option value="4">Service Only</option>                            
+                      </select>
+                  </div>
+                  <div class="input-group col-md-8">
+                    <label class="control-label" for="code_description">Description :</label>
+                      <select class="form-control col-md-8" id="code_description" required>
+                        <option value="">Please select...</option>
+                        <option value="DTH">Temp Cont'l</option>
+                        <option value="ACC">AC Calibrator</option>
+                        <option value="ACR">AC Reference</option>
+                        <option value="AC">Accelerometer</option>
+                        <option value="JA">Aligner Jig</option>
+                        <option value="AM">Anemometer</option>
+                        <option value="BST">Bond Shear Tester</option>
+                        <option value="CC">Calibration Capacitor</option>
+                        <option value="CP">Caliper</option>
+                        <option value="CR">Chart Recorder</option>
+                        <option value="CRG">Certified Reference Gas</option>
+                        <option value="CLM">Clamp Meter</option>
+                        <option value="CTS">Coating Thickness Standard</option>
+                        <option value="CMM">Coord. Measuring Machine</option>
+                        <option value="CTG">Compound Test Gauge</option>
+                        <option value="CM">Conductivity Meter</option>
+                        <option value="JC">Cover height Jig</option>
+                        <option value="CT">Curve Tracer</option>
+                        <option value="DCR">DC Reference</option>
+                        <option value="DWT">Dead Weight Tester</option>
+                        <option value="DC">Decade Capacitor</option>
+                        <option value="DR">Decade Resistor</option>
+                        <option value="DG">Dial/Digimatic Test Indicator</option>
+                        <option value="DST">Die Shear Tester</option>
+                        <option value="DB">Digibridge</option>
+                        <option value="JE">Electrode Jig</option>
+                        <option value="FLG">Flatness Gauge</option>
+                        <option value="FOG">Force Gauge</option>
+                        <option value="JF">Form Height Jig</option>
+                        <option value="FC">Frequency Counter</option>
+                        <option value="FG">Function Generator</option>
+                        <option value="PS">Pressurization System</option>
+                        <option value="PSM">Psychron Meter</option>
+                      </select>
+                  </div>
+                  <br />
+              </div>
+              <!-- /input-group -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="submitCsCodeGen-form" class="btn btn-primary">Generate</button>
+        </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal  bs-example-modal" id="addRecord-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Calibration Record</h4>
+      </div>
+      <div class="modal-body">
+          <div id="schedule-content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="addRecord-btn">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+//
+$(function(){
+   $("#submitCsCodeGen-form").on("click",function(){
+       var code_department = $("#code_department").val();
+       var code_category = $("#code_category").val();
+       var code_description = $("#code_description").val();
+       
+       if(code_department && code_category && code_description){
+            $.ajax({  
+                type:"POST",
+                url:"/record/get-cscode",
+                data:{
+                        code_department  : code_department ,
+                        code_category  : code_category ,
+                        code_description  : code_description 
+                    },
+                success : function(data){
+                    var cs_code = data.cs_code;
+                  //  $(data).each(function(){//loops
+                        $("[name='cs_code']").val(cs_code);
+                        //alert(data.cs_code);
+                  //  });
+                    
+                    $("[name='cs_code']").val(code_department + code_category+ code_description);
+                    $("#csCodeModal").modal('hide');
+                }
+            });
+       }else{
+           alert('All Fields are required.');
+       }
+   });
+   
+
+    //generate serial no.
+    $("#generateSerialNo").on("click", function(){
+    
+    var con = confirm("Generate Serial No. ?");
+        if(con){
+            var now = new Date(),
+            then = new Date(
+                now.getMonth()+1,
+                now.getDate(),
+                0,0,0),
+            ss = now.getTime() - then.getTime(); // difference in seconds
+            
+            var mm = now.getMonth()+1;
+            var dd = now.getDate();
+            var serial_number = mm+""+dd+""+ss;
+            
+            $('[name="serial_number"').val(serial_number);
+        }
+    });
+    
+    //generate cs code
+    $("#generateCsCode").on("click", function(){
+
+        $("#csCodeModal").modal('show');
+    });
+
+    //validate submit
+    $("#submitRecord-form").on("click",function(){
+        var cs_code = $("[name='cs_code']").val();
+        if(!cs_code){
+            alert("Please generate CS CODE!"); 
+        }
+    });
+    
+    //grr button yes
+    $("#grrYes").on("click",function(){
+       $(".grrOption") .show();
+    });
+    
+    //grr button no
+    $("#grrNo").on("click",function(){
+       $(".grrOption") .hide();
+    });
+});
+
+function dateCalibration(){
+    
+    var frequency = $("[name='frequency']") .val();
+    var calibration_date = $("[name='date_calibration']") .val();
+    if(frequency){
+    var cal_date = new Date(calibration_date);
+    var newdate = new Date(cal_date);
+    newdate.setDate(newdate.getDate() + eval(frequency));
+    var dd = newdate.getDate();
+    var mm = newdate.getMonth() + 1;
+    var y = newdate.getFullYear();
+    var next_calibration = mm + '/' + dd + '/' + y;
+    $("[name='next_calibration']") .val(next_calibration);
+    }else{
+        alert("Please set frequency!");
+        $("[name='date_calibration']") .val('');
+        $("[name='frequency']") .focus();
+    }
+}
+
+$(function(){
+    $("[name='frequency'").on("keyup",function(){
+        var intRegex = /^\d+$/; //check integer
+        var frequency = $("[name='frequency']") .val();
+        var calibration_date = $("[name='date_calibration']") .val();
+        if(!frequency){
+            
+                $("[name='next_calibration']") .val(calibration_date);
+        }
+        if(intRegex.test(frequency)){
+            if(calibration_date){
+                if(frequency){
+                var cal_date = new Date(calibration_date);
+                var newdate = new Date(cal_date);
+                newdate.setDate(newdate.getDate() + eval(frequency));
+                var dd = newdate.getDate();
+                var mm = newdate.getMonth() + 1;
+                var y = newdate.getFullYear();
+                var next_calibration = mm + '/' + dd + '/' + y;
+                $("[name='next_calibration']") .val(next_calibration);
+                }else{
+                    alert("Please set frequency!");
+                    $("[name='date_calibration']") .val('');
+                    $("[name='frequency']") .focus();
+                }
+            }
+        }
+    });
+    
+});
+</script>

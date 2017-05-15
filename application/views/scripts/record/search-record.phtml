@@ -1,0 +1,68 @@
+<script src="<?php echo $this->baseUrl(); ?>/assets/calibration/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<script src="<?php echo $this->baseUrl(); ?>/assets/js/calibration/calibration.js"></script>
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/assets/css/calibration/calibration.css">
+
+<div class="row">
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Search Record</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+<!--          <a href="javascript:;" id="addRecord" class="pull-right btn btn-primary"><i class="fa fa-fw fa-plus"></i> Add Record</a>-->
+              <!-- input-group -->
+              <div class="input-group col-md-8">
+                <input type="text" class="form-control" name="searchRecord" placeholder="type CS_CODE here!" />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-info btn-flat"><i class="fa fa-fw fa-search"></i></button>
+                    </span>
+              </div>
+              <div class="searchRecord-results" ></div>
+              <!-- /input-group -->
+        </div>
+      </div>
+      <!-- /.box -->
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal  bs-example-modal" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Calibration Details</h4>
+      </div>
+      <div class="modal-body">
+          <div id="schedule-content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="update-btn" style="display:none;">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal  bs-example-modal" id="addRecord-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Calibration Record</h4>
+      </div>
+      <div class="modal-body">
+          <div id="schedule-content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="addRecord-btn">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

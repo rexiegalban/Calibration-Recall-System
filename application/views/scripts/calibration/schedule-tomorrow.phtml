@@ -1,0 +1,82 @@
+<script src="<?php echo $this->baseUrl(); ?>/assets/calibration/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<script src="<?php echo $this->baseUrl(); ?>/assets/js/calibration/calibration.js"></script>
+
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h2 class="box-title">To Calibrate on <?php echo $this->tomorrow; ?></h2>
+
+              <div class="box-tools pull-right">
+                <a href="<?php echo $this->baseUrl(); ?>/calibration" class="btn btn-primary">Back
+                </a>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="recordTable" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>CS Code</th>
+                  <th>Description</th>
+                  <th>Manufacturer</th>
+                  <th>Present Status</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+	        <?php foreach ($this->scheduleTomorrow as $list) { ?>
+	            <tr>
+	                <td><?php echo $list['cs_code']; ?></td>
+	                <td><?php echo $list['description']; ?></td>
+	                <td><?php echo $list['manufacturer']; ?></td>
+	                <td><?php echo $list['status']; ?></td>
+	                <td class='center'>
+	                	<a onclick="viewCalibrationContent(<?php echo $list['id'] ?>)" href="javascript:;">
+                                    View 
+                                </a>
+	                </td>
+	                
+	            </tr>
+	        		
+	        <?php } ?>
+                
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>CS Code</th>
+                  <th>Description</th>
+                  <th>Manufacturer</th>
+                  <th>Present Status</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+
+
+<!-- Modal -->
+<div class="modal  bs-example-modal" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Calibration Details</h4>
+      </div>
+      <div class="modal-body">
+          <div id="schedule-content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<!--        <button type="button" class="btn btn-primary">Calibrate</button>-->
+      </div>
+    </div>
+  </div>
+</div>

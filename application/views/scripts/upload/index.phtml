@@ -1,0 +1,52 @@
+<?php echo $this->sample; ?>
+<!-- left column -->
+<div class="row">
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Upload Database</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form method="POST" action="upload/database" enctype="multipart/form-data">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="calibrationDb">File input</label>
+                  <input type="file" id="calibrationDb" name="calibrationDb" required>
+
+                </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Upload</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+
+        </div>
+</div>
+
+<script>
+//$(function(){
+//    
+//     $("#uploadDb").on("submit",function(ev){
+//        ev.preventDefault();
+//        var db_name    = $("[name='calibration_db']").val();
+//        
+//        $.ajax({
+//            dataType : "json",
+//            type:"POST",
+//            url:"/upload/upload-database",
+//            data:{
+//                db_name    : db_name
+//            },
+//            success: function(data){
+//                alert("Successfully added!");
+//            }
+//        });
+//    }); 
+//});
+</script>
